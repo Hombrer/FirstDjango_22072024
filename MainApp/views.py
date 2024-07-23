@@ -1,6 +1,8 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from MainApp.models import Item
+# Нужный тип исключения для get_item()
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 
