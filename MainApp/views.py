@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
-
+from MainApp.models import Item
 # Create your views here.
 
 
@@ -46,6 +46,7 @@ def get_item(request, item_id):
 
 
 def get_items(request):
+    items = Item.objects.all()
     context = {
         "items": items
     }
