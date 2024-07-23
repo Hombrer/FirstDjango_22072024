@@ -50,12 +50,16 @@ def get_item(request, item_id):
             <p> <a href="/items"> Назад к списку товаров </a></p>
             """
             return HttpResponse(result)
-    return HttpResponseNotFound(f"Item with id={item_id} not found.")
+    return render(request, "errors.html", {"error": f"Item with id={item_id} not found."})
 
 
 def get_items(request):
-    result = "<h1>Список товаров</h1><ol>"
-    for item in items:
-        result += f"""<li> <a href="/item/{item['id']}"> {item['name']}</li> """
-    result += "</ol>"
-    return HttpResponse(result)
+    # result = "<h1>Список товаров</h1><ol>"
+    # for item in items:
+    #     result += f"""<li> <a href="/item/{item['id']}"> {item['name']}</li> """
+    # result += "</ol>"
+    # return HttpResponse(result)
+    context = {
+        "items": items
+    }
+    return render(request, "items_list.html", context)
